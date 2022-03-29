@@ -1,9 +1,5 @@
 package tool;
 
-import java.io.*;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Random;
 
 public class Tool {

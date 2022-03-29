@@ -1,13 +1,12 @@
 package algorithm;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class SortMethods {
-    public static long insertSort(int[] arr){
-        //游标从1开始
-        long t1=System.nanoTime();
+    //插入排序
+    //时间复杂度O(n²)
+    public static int[] insertSort(int[] arr){
         for(int i=1;i<arr.length;i++)
         {
             for(int j=0;j<i;j++)
@@ -19,10 +18,47 @@ public class SortMethods {
                 }
             }
         }
-        long t2=System.nanoTime();
-        System.out.println("Cost:"+(t2 - t1));
-        return t2-t1;
+        return arr;
     }
+    //冒泡排序
+    //时间复杂度O(n²)
+    public static int[] bubbleSort(int[] arr){
+        for(int i=arr.length-1;i>0;i--)
+        {
+            for(int j=0;j<i;j++)
+            {
+                if(arr[j]>arr[j+1])
+                {
+                    int temp=arr[j];
+                    arr[j]=arr[j+1];
+                    arr[j+1]=temp;
+                }
+            }
+        }
+        return arr;
+    }
+    //选择排序
+    //时间复杂度O(n²)
+    public static int[] selectSort(int[] arr){
+        int i=0;
+        while(i<arr.length){
+            int min=Integer.MAX_VALUE;
+            int minIndex=0;
+            for(int j=i;j<arr.length;j++){
+                if(arr[j]<min){
+                    min=arr[j];
+                    minIndex=j;
+                }
+            }
+            int temp=arr[i];
+            arr[i]=arr[minIndex];
+            arr[minIndex]=temp;
+            i++;
+        }
+        return arr;
+    }
+    //归并排序
+    //时间复杂度O(nlogn)
     public static int[] mergeSort(int[] arr){
         if(arr.length==1)
             return arr;
@@ -35,7 +71,7 @@ public class SortMethods {
         r=mergeSort(r);
         return merge(l,r);
     }
-    public static int[] merge(int[] l, int[] r){
+    private static int[] merge(int[] l, int[] r){
         int len=l.length+r.length;
         int[] res=new int[len];
         Stack<Integer> leftStack=new Stack<Integer>();
