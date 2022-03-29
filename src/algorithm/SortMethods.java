@@ -1,8 +1,7 @@
 package algorithm;
 
-import java.util.ArrayDeque;
-import java.util.Arrays;
-import java.util.Queue;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Stack;
 
 public class SortMethods {
@@ -30,12 +29,8 @@ public class SortMethods {
         int mid=arr.length/2;
         int[] l=new int[mid];
         int[] r=new int[arr.length-mid];
-        for(int i=0;i<mid;i++)
-            l[i]=arr[i];
-        System.out.println("l = " + Arrays.toString(l));
-        for(int i=mid;i<arr.length;i++)
-            r[i-mid]=arr[i];
-        System.out.println("r = " + Arrays.toString(r));
+        System.arraycopy(arr, 0, l, 0, mid);
+        if (arr.length - mid >= 0) System.arraycopy(arr, mid, r, 0, arr.length - mid);
         l=mergeSort(l);
         r=mergeSort(r);
         return merge(l,r);
@@ -64,9 +59,6 @@ public class SortMethods {
             }else{
                 right=Integer.MAX_VALUE;
             }
-            System.out.println("left = " + left);
-            System.out.println("right = " + right);
-            System.out.println("index = " + index);
             if(left<right){
                 res[index]=left;
                 if(right!=Integer.MAX_VALUE)
@@ -77,8 +69,6 @@ public class SortMethods {
                     leftStack.push(left);
             }
             index++;
-            System.out.println("leftStack.isEmpty() = " + leftStack.isEmpty());
-            System.out.println("rightStack.isEmpty() = " + rightStack.isEmpty());
         }
         return res;
     }

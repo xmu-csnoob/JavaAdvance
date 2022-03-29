@@ -32,15 +32,4 @@ public class Tool {
         }
         return res;
     }
-    public static void writeResults(HashMap<Integer,Long> hashMap,String filename) throws IOException {
-        String filePath="D:\\JavaAdvance\\src\\files\\";
-        File csvFile=new File(filePath+filename+".csv");
-        csvFile.createNewFile();
-        BufferedWriter csvWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(csvFile), "GB2312"), 1024);
-        for(Map.Entry<Integer,Long> entry:hashMap.entrySet())
-        {
-            csvWriter.write(entry.getKey()+","+ entry.getValue()+"\n");
-        }
-        csvWriter.close();
-    }
 }
